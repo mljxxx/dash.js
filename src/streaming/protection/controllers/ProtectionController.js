@@ -762,6 +762,10 @@ function ProtectionController(config) {
 
             if (xhr.status >= 200 && xhr.status <= 299) {
                 const responseHeaders = Utils.parseHttpHeaders(xhr.getAllResponseHeaders ? xhr.getAllResponseHeaders() : null);
+                // console.log(responseHeaders)
+                if(responseHeaders['x-auth-device-id']) {
+                    eventBus.trigger(events.DEVICEID_REQUEST_COMPLETE, { 'deviceId': responseHeaders['x-auth-device-id'] }) 
+                }
                 let licenseResponse = new LicenseResponse(xhr.responseURL, responseHeaders, xhr.response);
                 const licenseResponseFilters = customParametersModel.getLicenseResponseFilters();
                 _applyFilters(licenseResponseFilters, licenseResponse)

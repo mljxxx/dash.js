@@ -129,6 +129,8 @@ class ProtectionEvents extends EventsBase {
          */
         this.LICENSE_REQUEST_COMPLETE = 'public_licenseRequestComplete';
 
+        this.DEVICEID_REQUEST_COMPLETE = 'public_deviceRequestComplete';
+
         /**
          * Sending a license rquest
          * @event ProtectionEvents#LICENSE_REQUEST_SENDING
